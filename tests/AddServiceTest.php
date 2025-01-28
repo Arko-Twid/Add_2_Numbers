@@ -73,5 +73,19 @@ class AddServiceTest extends TestCase
         $this->assertInfinite($addObject->add(INF, 1));
         $this->assertNan($addObject->add(INF, -INF));
     }
+    public function testOverflowAndUnderflow()
+    {
+        $addObject = new AddService();
+        $this->assertIsFloat($addObject->add(PHP_INT_MAX, 1));
+        $this->assertIsInt($addObject->add(PHP_INT_MAX, -PHP_INT_MAX));
+        $this->assertIsFloat($addObject->add(-PHP_INT_MAX, -PHP_INT_MAX));
+
+        $this->assertIsFloat($addObject->add(PHP_FLOAT_MAX, 1));
+        $this->assertEquals(INF,($addObject->add(PHP_FLOAT_MAX, PHP_FLOAT_MAX)));
+        $this->assertIsFloat($addObject->add(PHP_FLOAT_MAX, -PHP_FLOAT_MAX));
+
+        $this->assertEquals(-INF,($addObject->add(-PHP_FLOAT_MAX, -PHP_FLOAT_MAX)));
+
+    }
 
 }
