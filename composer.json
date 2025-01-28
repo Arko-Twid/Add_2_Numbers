@@ -1,0 +1,12 @@
+{
+    "name": "arko/add-service",
+    "require": {
+        "phpunit/phpunit": "^11.5"
+    },
+    "authors": [
+        {
+            "name": "Arko-Twid",
+            "email": "arkodeep.koley@twidpay.com"
+        }
+    ]
+}
