@@ -58,5 +58,20 @@ class AddServiceTest extends TestCase
         $addObject = new AddService();
         $addObject->add('', '');
     }
+    public function testAddNanType()
+    {
+        $addObject = new AddService();
+        $this->assertNan($addObject->add(NAN, NAN));
+        $this->assertNan($addObject->add(NAN, 1));
+        $this->assertNan($addObject->add(1, NAN));
+    }
+
+    public function testAddInfTyoe()
+    {
+        $addObject = new AddService();
+        $this->assertInfinite($addObject->add(INF, INF));
+        $this->assertInfinite($addObject->add(INF, 1));
+        $this->assertNan($addObject->add(INF, -INF));
+    }
 
 }
