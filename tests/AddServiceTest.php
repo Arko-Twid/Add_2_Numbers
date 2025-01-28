@@ -39,4 +39,24 @@ class AddServiceTest extends TestCase
         $secondNum = mt_rand() / mt_getrandmax() * 100;
         $this->assertEquals($firstNum+$secondNum, $addObject->add($firstNum, $secondNum));
     }
+    public function testAddTwoString()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $addObject = new AddService();
+        $addObject->add('Hello', 'Boss');
+    }
+    public function testAddOneString()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $addObject = new AddService();
+        $addObject->add('Hello', 3);
+    }
+
+    public function testAddTwoSymbols()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $addObject = new AddService();
+        $addObject->add('', '');
+    }
+
 }
